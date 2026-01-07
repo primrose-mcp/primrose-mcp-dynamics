@@ -1,0 +1,37 @@
+{
+  "name": "lineer-mcp-dynamics",
+  "version": "1.0.0",
+  "description": "CRM MCP Server for Cloudflare Workers",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "tsc --noEmit",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "inspector": "npx @modelcontextprotocol/inspector",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "agents": "^0.3.0",
+    "hono": "^4.11.3",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.10",
+    "@cloudflare/workers-types": "^4.20251119.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.3",
+    "wrangler": "^4.54.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "bun@1.1.33",
+  "overrides": {
+    "@modelcontextprotocol/sdk": "^1.25.1"
+  }
+}

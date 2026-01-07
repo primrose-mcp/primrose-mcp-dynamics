@@ -1,0 +1,91 @@
+{
+  // ==========================================================================
+  // CRM MCP Server - Wrangler Configuration
+  // ==========================================================================
+  //
+  // MULTI-TENANT ARCHITECTURE:
+  // This server supports multiple tenants. Credentials are passed via request
+  // headers, NOT stored as wrangler secrets. This allows a single deployment
+  // to serve multiple customers.
+  //
+  // CUSTOMIZE FOR YOUR CRM:
+  // 1. Update "name" (e.g., "hubspot-mcp-server")
+  // 2. Enable KV namespace if using OAuth token caching
+  // ==========================================================================
+
+  "name": "lineer-mcp-dynamics",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-12-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // ==========================================================================
+  // Environment Variables (server-wide configuration, not per-tenant)
+  // ==========================================================================
+  "vars": {
+    "CHARACTER_LIMIT": "50000",
+    "DEFAULT_PAGE_SIZE": "20",
+    "MAX_PAGE_SIZE": "100"
+  },
+
+  // ==========================================================================
+  // Multi-Tenant Authentication (via Request Headers)
+  // ==========================================================================
+  //
+  // Tenant credentials are passed via HTTP headers on each request:
+  //
+  // Required (one of):
+  //   X-CRM-API-Key: Your CRM API key
+  //   X-CRM-Access-Token: OAuth access token
+  //
+  // Optional:
+  //   X-CRM-Base-URL: Override the default CRM API base URL
+  //   X-CRM-Client-ID: OAuth client ID
+  //   X-CRM-Client-Secret: OAuth client secret
+  //
+  // CRM-specific headers:
+  //   X-Salesforce-Instance-URL: Salesforce instance URL
+  //   X-Dynamics-Tenant-ID: Microsoft Dynamics tenant ID
+  //   X-Dynamics-Environment-URL: Microsoft Dynamics environment URL
+
+  // ==========================================================================
+  // KV Namespace (uncomment for OAuth token storage)
+  // ==========================================================================
+  // Create: npx wrangler kv namespace create "OAUTH_KV"
+  //
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "OAUTH_KV",
+  //     "id": "<YOUR_KV_NAMESPACE_ID>"
+  //   }
+  // ],
+
+  // ==========================================================================
+  // Durable Objects (uncomment for stateful sessions)
+  // ==========================================================================
+  // "durable_objects": {
+  //   "bindings": [
+  //     {
+  //       "name": "MCP_SESSIONS",
+  //       "class_name": "McpSessionDO"
+  //     }
+  //   ]
+  // },
+  // "migrations": [
+  //   {
+  //     "tag": "v1",
+  //     "new_classes": ["McpSessionDO"]
+  //   }
+  // ],
+
+  // ==========================================================================
+  // Development
+  // ==========================================================================
+  "dev": {
+    "port": 8787,
+    "local_protocol": "http"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

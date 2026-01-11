@@ -13,7 +13,7 @@
   // 2. Enable KV namespace if using OAuth token caching
   // ==========================================================================
 
-  "name": "lineer-mcp-dynamics",
+  "name": "primrose-mcp-dynamics",
   "main": "src/index.ts",
   "compatibility_date": "2025-12-01",
   "compatibility_flags": ["nodejs_compat"],

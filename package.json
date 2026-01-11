@@ -1,5 +1,5 @@
 {
-  "name": "lineer-mcp-dynamics",
+  "name": "primrose-mcp-dynamics",
   "version": "1.0.0",
   "description": "CRM MCP Server for Cloudflare Workers",
   "type": "module",

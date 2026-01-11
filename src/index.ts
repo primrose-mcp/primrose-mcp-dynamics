@@ -55,7 +55,7 @@ import {
 /**
  * CUSTOMIZE: Update these values for your CRM
  */
-const SERVER_NAME = 'lineer-mcp-dynamics';
+const SERVER_NAME = 'primrose-mcp-dynamics';
 const SERVER_VERSION = '1.0.0';
 
 // =============================================================================
